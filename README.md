@@ -86,3 +86,8 @@ Dependency Health Checker provides a simple dashboard to identify outdated packa
         │   React Frontend  │
         │  Displays Report  │
         └───────────────────┘
+
+## Live Demo
+
+- Frontend: https://dependency-health-checker.onrender.com
+- Backend API: https://dependency-health-checker-1.onrender.com
