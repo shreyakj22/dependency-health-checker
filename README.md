@@ -44,48 +44,54 @@ Dependency Health Checker provides a simple dashboard to identify outdated packa
 
 ## Architecture
 
-                 USER
-                  │
-                  ▼
-        ┌───────────────────┐
-        │   React Frontend  │
-        │     (Vercel)      │
-        └─────────┬─────────┘
-                  │
-            HTTP / REST API
-                  │
-                  ▼
-        ┌───────────────────┐
-        │  Node.js + Express│
-        │      Backend      │
-        │     (Render)      │
-        └─────────┬─────────┘
-                  │
-                  ▼
-        ┌───────────────────┐
-        │ Dependency Health │
-        │     Analysis      │
-        └─────────┬─────────┘
-                  │
-          ┌───────┴────────┐
-          ▼                ▼
-   package.json       npm Registry /
-   Dependencies       Vulnerability Data
-          │                │
-          └───────┬────────┘
-                  ▼
-        ┌───────────────────┐
-        │ Analysis Results  │
-        │ • Outdated deps   │
-        │ • Vulnerabilities │
-        │ • Health status   │
-        └─────────┬─────────┘
-                  │
-                  ▼
-        ┌───────────────────┐
-        │   React Frontend  │
-        │  Displays Report  │
-        └───────────────────┘
+```text
+             USER
+               |
+               v
+    +---------------------+
+    |    React Frontend   |
+    |       (Render)      |
+    +----------+----------+
+               |
+          REST API Request
+               |
+               v
+    +---------------------+
+    |  Node.js + Express  |
+    |      Backend        |
+    |       (Render)      |
+    +----------+----------+
+               |
+               v
+    +---------------------+
+    | Dependency Analysis |
+    +----------+----------+
+               |
+        +------+------+
+        |             |
+        v             v
+  package.json    npm Registry
+  Dependencies        API
+        |             |
+        +------+------+
+               |
+               v
+    +---------------------+
+    |   Analysis Results  |
+    |                     |
+    | - Current packages  |
+    | - Outdated packages |
+    | - Health score      |
+    | - Health status     |
+    +----------+----------+
+               |
+               v
+    +---------------------+
+    |    React Frontend   |
+    |   Displays Report   |
+    +---------------------+
+
+
 
 
 
