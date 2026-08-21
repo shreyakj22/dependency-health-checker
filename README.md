@@ -87,6 +87,8 @@ Dependency Health Checker provides a simple dashboard to identify outdated packa
         │  Displays Report  │
         └───────────────────┘
 
+
+
 ## Live Demo
 
 - Frontend: https://dependency-health-checker.onrender.com
