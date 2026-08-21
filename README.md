@@ -44,27 +44,45 @@ Dependency Health Checker provides a simple dashboard to identify outdated packa
 
 ## Architecture
 
-```text
-User
- |
- v
-React Frontend
- |
- | HTTP POST
- v
-Express Backend
- |
- v
-Dependency Analyzer
- |
- v
-npm Registry API
- |
- v
-Version Comparison
- |
- v
-Analysis Result
- |
- v
-React Dashboard
+                 USER
+                  │
+                  ▼
+        ┌───────────────────┐
+        │   React Frontend  │
+        │     (Vercel)      │
+        └─────────┬─────────┘
+                  │
+            HTTP / REST API
+                  │
+                  ▼
+        ┌───────────────────┐
+        │  Node.js + Express│
+        │      Backend      │
+        │     (Render)      │
+        └─────────┬─────────┘
+                  │
+                  ▼
+        ┌───────────────────┐
+        │ Dependency Health │
+        │     Analysis      │
+        └─────────┬─────────┘
+                  │
+          ┌───────┴────────┐
+          ▼                ▼
+   package.json       npm Registry /
+   Dependencies       Vulnerability Data
+          │                │
+          └───────┬────────┘
+                  ▼
+        ┌───────────────────┐
+        │ Analysis Results  │
+        │ • Outdated deps   │
+        │ • Vulnerabilities │
+        │ • Health status   │
+        └─────────┬─────────┘
+                  │
+                  ▼
+        ┌───────────────────┐
+        │   React Frontend  │
+        │  Displays Report  │
+        └───────────────────┘
